@@ -1,48 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter, Route, NavLink} from 'react-router-dom';
+import {BrowserRouter, Route} from 'react-router-dom';
+import App from './App';
+import User from './User';
+import About from './About';
+import Home from './Home';
 
-const container=document.getElementById("container");
-
-const App = () => {return ( <div>
-   <Route path="/" component={NavMenu}/>
-   <Route path="/home" component={Home}/>
+ReactDOM.render(<BrowserRouter>
+<div>
+    <Route path="/" component={App}/>
     <Route path="/about" component={About}/>
-   <Route path="/categories" component={Categories}/>
-  
-   <Route path="/contact" component={Contact}/>
-   
-</div>)}
+    <Route path="/home" component={Home}/>
+    <Route path="/user/:userId" component={User}/>
+</div>
+</BrowserRouter>, document.getElementById("container"));
 
-const Home = () =>
-{
-    return <div>Home</div>
-}
-
-const Categories = () =>
-{
-    return <div>categories</div>
-}
-
-const About = () =>
-{
-    return <div>About</div>
-}
-
-const Contact = () =>
-{
-    return <div>Contact</div>
-}
-
-const NavMenu = () =>
-{
-    return (<div>
-        <NavLink to="/home">Home</NavLink>
-        <NavLink to="/about">About</NavLink>
-        <NavLink to="/categories">Categories</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
-
-    </div>)
-}
-
-ReactDOM.render(<BrowserRouter><App/></BrowserRouter>, container);
